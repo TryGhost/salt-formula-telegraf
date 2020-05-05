@@ -34,7 +34,7 @@ config_d_dir_agent_clean:
     - watch_in:
       - service: telegraf_service_agent
 
-{%- for name,values in agent.input.iteritems() %}
+{%- for name,values in agent.input.items() %}
 
 {%- if values is not mapping or values.get('enabled', True) %}
 input_{{ name }}_agent:
@@ -79,7 +79,7 @@ telegraf_user_in_group_{{ name }}:
 
 {%- endfor %}
 
-{%- for name,values in agent.output.iteritems() %}
+{%- for name,values in agent.output.items() %}
 
 output_{{ name }}_agent:
   file.managed:
