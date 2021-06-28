@@ -5,6 +5,9 @@
 telegraf_packages_agent:
   pkg.installed:
     - names: {{ agent.pkgs }}
+{%- if agent.version is defined %}
+    - version: {{ agent.version }}
+{%- endif %}
 
 telegraf_config_agent:
   file.managed:
